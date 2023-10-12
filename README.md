@@ -148,6 +148,13 @@ interface VitePluginVueDevToolsOptions {
    * @default false
    */
   openInEditorHost?: string | false
+
+  /**
+   * Customize the config base (e.g. http://localhost:5173)
+   * 
+   * @default config.base
+   */
+  base?: string
 }
 ```
 

@@ -36,6 +36,7 @@ export interface VitePluginVueDevToolsOptions {
    * @default ''
    */
   appendTo?: string | RegExp
+
   /**
    * Enable Vue DevTools to analyze the codebase by using Babel
    * @default
@@ -50,6 +51,13 @@ export interface VitePluginVueDevToolsOptions {
    * @default false
    */
   openInEditorHost?: string | false
+
+  /**
+   * Customize the config base (e.g. http://localhost:5173)
+   * 
+   * @default config.base
+   */
+  base?: string
 }
 
 const defaultOptions: DeepRequired<VitePluginVueDevToolsOptions> = {
@@ -142,7 +150,7 @@ export default function VitePluginVueDevTools(options?: VitePluginVueDevToolsOpt
     },
     async load(id) {
       if (id === 'virtual:vue-devtools-options')
-        return `export default ${JSON.stringify({ base: config.base })}`
+        return `export default ${JSON.stringify({ base: pluginOptions.base ?? config.base })}`
     },
     transform(code, id) {
       const { root, base } = config

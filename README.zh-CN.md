@@ -142,6 +142,19 @@ interface VitePluginVueDevToolsOptions {
    * }
    */
   analyze?: Partial<AnalyzeOptions>
+
+  /**
+   * Customize openInEditor host (e.g. http://localhost:3000)
+   * @default false
+   */
+  openInEditorHost?: string | false
+
+  /**
+   * Customize the config base (e.g. http://localhost:5173)
+   * 
+   * @default config.base
+   */
+  base?: string
 }
 ```
 
